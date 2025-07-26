@@ -1,5 +1,6 @@
 package com.e_learning.portal.Service;
 
+import com.e_learning.portal.Annotations.LogExecutionTime;
 import com.e_learning.portal.DTO.*;
 import com.e_learning.portal.Entity.User;
 import com.e_learning.portal.Exception.AlreadyEnrolledException;
@@ -43,6 +44,8 @@ public class AuthService {
         return "User registered successfully";
     }
 
+
+    @LogExecutionTime
     public AuthResponse login(AuthRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
